@@ -39,7 +39,7 @@ namespace SampleOfBindingIssue1
 
             int xx = 0;
 
-            // XAML binding of SelectedValue="{Binding DisplayPricing}" is not working.
+            // XAML binding of ComboBox  x:Name="cbPriceValueList"  SelectedValue="{Binding DisplayPricing}" is not working.
             // So temp workaround is to set it via coding,  but need to find out why it does not work in xaml;
             cbPriceValueList.SelectedValue = ((PricingData)this.DataContext).DisplayPricing;
         }

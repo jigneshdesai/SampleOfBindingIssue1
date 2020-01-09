@@ -17,7 +17,7 @@
                     <DataTemplate>
                         <StackPanel>
                             <!--<TextBlock Text="{Binding PricingTitle }"/>-->
-                            <sampleofbindingissue1:PricingUserControl DataContext="{Binding}" />
+                            <sampleofbindingissue1:  DataContext="{Binding}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
