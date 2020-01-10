@@ -13,13 +13,14 @@
     >
 
     <UserControl.Resources>
-        <local:DynamicPricingList x:Name="myList" x:Key="myList"></local:DynamicPricingList>
+        <local:cdpl x:Name="myList" x:Key="myList"></local:cdpl>
+        
     </UserControl.Resources>
     
     <StackPanel Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="lblPriceHeader" Text="{Binding PricingTitle}" Margin="0,0,50,0" />
-            <ComboBox  x:Name="cbPriceValueList" ItemsSource="{x:Bind dpl}" DisplayMemberPath="PriceValue" SelectedValuePath="PriceValue"  SelectedValue="{Binding DisplayPricing}"   />
+            <ComboBox  x:Name="cbPriceValueList" ItemsSource="{x:Bind myList}" DisplayMemberPath="PriceValue" SelectedValuePath="PriceValue"  SelectedValue="{Binding DisplayPricing}"   />
             <ComboBox  x:Name="cbCurrencyValueList"/>
 
             <ListView x:Name="lbPriceChangeSchedule" ItemsSource="{Binding PricingScheduleList}">
@@ -27,7 +28,7 @@
                     <DataTemplate>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <ComboBox  x:Name="cbSchedulePriceValueList" ItemsSource="{Binding ElementName=UCpage, Path=dpl}"  DisplayMemberPath="PriceValue"  SelectedValuePath="PriceValue"   SelectedValue="{Binding DisplayPricing,Mode=TwoWay}" />
+                                <ComboBox  x:Name="cbSchedulePriceValueList" ItemsSource="{Binding Source={StaticResource myList}}"  DisplayMemberPath="PriceValue"  SelectedValuePath="PriceValue"   SelectedValue="{Binding DisplayPricing,Mode=TwoWay}" />
                                 <TextBlock Text="starting"/>
                                 <DatePicker x:Name="cbScheduleDate"/>
                                 <ComboBox  x:Name="cbScheduleTime"/>

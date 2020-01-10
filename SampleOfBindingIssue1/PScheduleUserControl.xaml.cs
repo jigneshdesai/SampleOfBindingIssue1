@@ -33,15 +33,22 @@ namespace SampleOfBindingIssue1
             for (int i = 1; i < 24; i++)
             {
                 dpl.Add(new DynamicPricingList(string.Format("{0} USD", i)));
+                myList.Add(new DynamicPricingList(string.Format("{0} USD", i)));
+               
             }
 
             int xx = 0;
            
+          
         }
     }
 
-
-    public class DynamicPricingList
+    // https://stackoverflow.com/questions/16164521/list-in-resource-xaml-and-access-in-viewmodel
+    public class cdpl : List<DynamicPricingList>
+    {
+        public string PV { get; set; }
+    }
+    public class DynamicPricingList 
     {
         public string PriceValue { get; set; }
         public DynamicPricingList() { }
