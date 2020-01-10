@@ -123,10 +123,10 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PricingUserControl.xaml.cs">
-      <DependentUpon>PricingUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PScheduleUserControl.xaml.cs">
+      <DependentUpon>PScheduleUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="startpage.xaml.cs">
       <DependentUpon>startpage.xaml</DependentUpon>
     </Compile>
@@ -155,7 +155,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PricingUserControl.xaml">
+    <Page Include="PScheduleUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
