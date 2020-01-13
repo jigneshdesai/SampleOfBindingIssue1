@@ -5,6 +5,7 @@
     xmlns:local="using:SampleOfBindingIssue1"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:classes="using:SampleOfBindingIssue1.Classes"
     mc:Ignorable="d"
     Loaded="UserControl_Loaded"
     d:DesignHeight="300"
@@ -21,15 +22,17 @@
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="lblPriceHeader" Text="{Binding PricingTitle}" Margin="0,0,50,0" />
             <ComboBox  x:Name="cbPriceValueList" ItemsSource="{x:Bind myList}" DisplayMemberPath="PriceValue" SelectedValuePath="PriceValue"  SelectedValue="{Binding DisplayPricing}"  SelectedItem="{Binding DisplayPricing,Mode=TwoWay}" />
+            <TextBlock Text="{Binding DisplayPricing }" />
             <ComboBox  x:Name="cbCurrencyValueList"/>
 
             <ListView x:Name="lbPriceChangeSchedule" ItemsSource="{Binding PricingScheduleList}">
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="classes:PricingSchedule">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <ComboBox  x:Name="cbSchedulePriceValueList" ItemsSource="{Binding Source={StaticResource myList}}"  DisplayMemberPath="PriceValue"  SelectedValuePath="PriceValue"   SelectedItem="{Binding DisplayPricing,Mode=TwoWay}"  SelectedValue="{Binding DisplayPricing,Mode=TwoWay}" />
-                                <TextBlock Text="starting"/>
+                                <TextBlock Text="{Binding DisplayPricing }" />
+                                <TextBlock Text=" [starting]"/>
                                 <DatePicker x:Name="cbScheduleDate"/>
                                 <ComboBox  x:Name="cbScheduleTime"/>
                                 <ComboBox  x:Name="cbScheduleTimeZone" />

@@ -34,6 +34,7 @@ namespace SampleOfBindingIssue1.Classes
         public string SchedulePricingTime { get; set; }
         public string SchedulePricingTimeZone { get; set; }
 
+        public string DisplayPricing => $"{SchedulePricingValue} {SchedulePricingCurrency}";
         public PricingSchedule(string schedulePricingValue, string schedulePricingCurrency, DateTime schedulePricingDate, string schedulePricingTime, string schedulePricingTimeZone)
         {
             SchedulePricingValue = schedulePricingValue;
@@ -42,7 +43,8 @@ namespace SampleOfBindingIssue1.Classes
             SchedulePricingTime = schedulePricingTime;
             SchedulePricingTimeZone = schedulePricingTimeZone;
         }
-    }
+
+          }
 
     public class DummyPricingData
     {

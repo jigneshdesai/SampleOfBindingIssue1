@@ -56,5 +56,13 @@ namespace SampleOfBindingIssue1
         {
             PriceValue = pPriceValue;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is DynamicPricingList))
+                return false;
+
+            return ((DynamicPricingList)obj).PriceValue == this.PriceValue;
+        }
     }
 }
