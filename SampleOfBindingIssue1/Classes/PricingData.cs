@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SampleOfBindingIssue1.Classes
 {
-    public class PricingData
+    public class PricingData : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public string PricingTitle { get; set; }
         public string PricingValue { get; set; }
         public string PricingCurrency { get; set; }
         public List<PricingSchedule> PricingScheduleList { get; set; }
 
-        public string DisplayPricing => $"{PricingValue} {PricingCurrency}";
+      //  public string DisplayPricing => $"{PricingValue} {PricingCurrency}";
 
         public PricingData(string pPricingTitle, string pPricingValue, string pPricingCurrency)
         {
@@ -22,6 +25,23 @@ namespace SampleOfBindingIssue1.Classes
             PricingTitle = pPricingTitle;
             PricingValue = pPricingValue;
             PricingCurrency = pPricingCurrency;
+        }
+
+        public string DisplayPricing
+        {
+            get => $"{PricingValue} {PricingCurrency}";
+            set
+            {
+                var sp = value.Split(' ');
+                PricingValue = sp.First();
+                PricingCurrency = sp.Last();
+                OnPropertyChanged();
+            }
+        }
+
+        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
     }
