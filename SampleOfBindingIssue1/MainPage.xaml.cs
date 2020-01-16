@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,70 @@ namespace SampleOfBindingIssue1
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public HostViewModel1 objHVM1 = new HostViewModel1();
+        public HostViewModel2 objHVM2 = new HostViewModel2();
         public MainPage()
         {
             this.InitializeComponent();
         }
+
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = objHVM1;
+
+           
+        }
+
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            objHVM1.NextButtonText = "Changed from code";
+          
+        }
+
+        private void btn3_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = objHVM2;
+        }
+
+        private void btn4_Click(object sender, RoutedEventArgs e)
+        {
+            objHVM2.NextButtonText = "Changed from code using BindableBase using library Prism.Mvvm";
+        }
     }
+
+
+
+
+
+
+
+    public class HostViewModel1
+    {
+        public HostViewModel1()
+        {
+            this.NextButtonText = "Next";
+        }
+
+        public string NextButtonText { get; set; }
+    }
+
+    // https://stackoverflow.com/questions/28844518/bindablebase-vs-inotifychanged
+    public class HostViewModel2  : BindableBase
+    {
+        private string nextButtonText;
+        public HostViewModel2()
+        {
+            this.NextButtonText = "Next";
+        }
+
+        public string NextButtonText
+        {
+            get { return this.nextButtonText; }
+            set { this.SetProperty(ref this.nextButtonText, value); }
+        }
+    }
+
+
+
+
 }

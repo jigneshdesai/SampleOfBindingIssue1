@@ -9,6 +9,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <TextBox  HorizontalAlignment="Left" Margin="42,76,0,0" Text="{Binding NextButtonText}" TextWrapping="Wrap" VerticalAlignment="Top" Width="316"/>
+        <Button x:Name="btn1" Content="Set it" Margin="42,130,0,0" VerticalAlignment="Top" Width="84" Click="btn1_Click"/>
+        <Button x:Name="btn2" Content="Change it #1 " Margin="212,130,0,0" VerticalAlignment="Top" Width="84" Click="btn2_Click"/>
+
+
+        <Button x:Name="btn3" Content="(Bindable) Set it" Margin="42,182,0,0" VerticalAlignment="Top" Width="141" Click="btn3_Click"/>
+        <Button x:Name="btn4" Content="(Bindable) Change it " Margin="212,182,0,0" VerticalAlignment="Top" Width="159" Click="btn4_Click"/>
+
+        
+        <TextBox  HorizontalAlignment="Left" Margin="42,337,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="316"/>
 
     </Grid>
 </Page>
