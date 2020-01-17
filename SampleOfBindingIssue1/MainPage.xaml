@@ -17,8 +17,29 @@
         <Button x:Name="btn3" Content="(Bindable) Set it" Margin="42,182,0,0" VerticalAlignment="Top" Width="141" Click="btn3_Click"/>
         <Button x:Name="btn4" Content="(Bindable) Change it " Margin="212,182,0,0" VerticalAlignment="Top" Width="159" Click="btn4_Click"/>
 
-        
-        <TextBox  HorizontalAlignment="Left" Margin="42,337,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="316"/>
+
+        <TextBox  HorizontalAlignment="Left" Margin="42,337,0,0" Text="{x:Bind variableForXBind, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="316"/>
+        <Button x:Name="btn5" Content="xbind" Margin="42,388,0,0" VerticalAlignment="Top" Width="118" Click="btn5_Click"/>
+        <TextBox HorizontalAlignment="Left" Margin="42,468,0,0" Text="{x:Bind objHVM2.NextButtonText, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="269"/>
+        <Button x:Name="btn6" Content="x:bind Class Test" Margin="316,468,0,0" VerticalAlignment="Top" Width="127" Click="btn6_Click"/>
+        <TextBox HorizontalAlignment="Left" Margin="45,555,0,0" Text="{x:Bind XBindFunction()}" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
+        <Button x:Name="btn7"  Content="Function Binding Test" Margin="333,555,0,0" VerticalAlignment="Top" Width="124"/>
+        <ComboBox Margin="45,605,0,0" Width="120" ItemsSource="{x:Bind ReturnListOfValues1()}"/>
+
+        <ListView Margin="750,76,66,460" x:Name="lbPriceChangeSchedule" ItemsSource="{x:Bind ReturnListOfValues1()}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox  x:Name="cbSchedulePriceValueList" ItemsSource="{x:Bind local:MainPage.ReturnListOfValues2()}" />
+                            <TextBlock Text="" />
+                            <TextBlock Text=" [starting]"/>
+                            <DatePicker x:Name="cbScheduleDate"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 </Page>

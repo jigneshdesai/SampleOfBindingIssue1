@@ -25,9 +25,12 @@ namespace SampleOfBindingIssue1
     {
         public HostViewModel1 objHVM1 = new HostViewModel1();
         public HostViewModel2 objHVM2 = new HostViewModel2();
+        public string variableForXBind { get; set; }
         public MainPage()
         {
             this.InitializeComponent();
+
+            variableForXBind = "Hello World";
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
@@ -51,6 +54,52 @@ namespace SampleOfBindingIssue1
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
             objHVM2.NextButtonText = "Changed from code using BindableBase using library Prism.Mvvm";
+        }
+
+        private void btn5_Click(object sender, RoutedEventArgs e)
+        {
+            // Binding Mode two way only transfers data from textbox control to variable. 
+            // but if variable changes it does not show updated data into textbox control. - Two way has no effect.
+            variableForXBind = "X:bind can see when changes are done to variables.";
+
+            // after you've loaded data, you can force one-time bindings to be initialized by calling this.Bindings.Update()
+            // force a manual update at any time with a call to Update
+            this.Bindings.Update();
+        }
+
+        private void btn6_Click(object sender, RoutedEventArgs e)
+        {
+            // x:bind in textbox control does not see changes done from codebehind , until mode is set to "oneway"
+            // even when underlying class has BindableBase
+            objHVM2.NextButtonText = "Change from code behind";
+        }
+
+
+        private string XBindFunction()
+        {
+
+            return ("This value is returned by XBindFunction");
+        }
+
+        private List<string> ReturnListOfValues1()
+        {
+            List<string> x = new List<string>();
+            x.Add("One");
+            x.Add("Two");
+            x.Add("Three");
+            x.Add("Four");
+            return (x);
+
+        }
+        static private List<string> ReturnListOfValues2()
+        {
+            List<string> x = new List<string>();
+            x.Add("One");
+            x.Add("Two");
+            x.Add("Three");
+            x.Add("Four");
+            return (x);
+
         }
     }
 
